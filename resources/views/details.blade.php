@@ -1,8 +1,16 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: E2Ps
- * Date: 1/14/19
- * Time: 10:00 AM
- * To change this template use File | Settings | File Templates.
- */
+@extends('index')
+@section('content')
+    @if($post)
+        <article>
+            <h3 class="text-success text-capitalize">
+                {{$post->title}}
+            </h3>
+            By: <a href="#{{$post->user->name}}">
+                {{$post->user->name}}
+            </a><br>
+            <p>
+                {{$post->content}}
+            </p>
+        </article>
+    @endif
+@endsection
