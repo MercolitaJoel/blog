@@ -37,4 +37,8 @@ Route::middleware(['auth.basic'])->group(function(){
     Route::get('posts/post/', 'PostsController@new_post')
         ->name('posts.post');
 
+    //comments
+    Route::post('post/{user_id}/{post_id}','CommentsController@store')
+        ->name('post.comment');
+
 });

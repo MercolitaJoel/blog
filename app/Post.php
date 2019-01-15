@@ -5,15 +5,21 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\User;
+use App\Comment;
 class Post extends Model
 {
     //@optional
     protected $table="post";
     protected $fillable=['user_id','title','content'];
-
+//one post belongs to a user
     function user(){
         return $this->belongsTo('App\user');
     }
+//one posts may have multiple comments
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
     function getTitleAttribute($value){
         //mutate our post title first letter
         return ucfirst($value);
